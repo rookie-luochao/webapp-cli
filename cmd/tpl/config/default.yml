@@ -1,0 +1,5 @@
+APP: tpl
+ENV: staging
+PROJECT_NAME: web-tpl
+PROJECT_DESCRIPTION: tpl
+APP_CONFIG: SRV_TEST=//demo.querycap.com

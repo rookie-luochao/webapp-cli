@@ -1,0 +1,43 @@
+.tmp/
+
+# dependencies
+node_modules/
+
+# testing
+coverage/
+
+# production
+build/
+lib/
+public/
+
+# Logs
+*.log
+
+# package archive file
+**/*.tgz
+
+# Runtime
+*.DS_Store
+
+# WebStorm
+.idea
+
+*.js
+*.rej
+
+.ignore
+
+# config/
+
+# vscode plug
+cSpell.json
+
+!.eslintrc.js
+# Dockerfile
+
+tools/script/config.ts
+src-clients/*/*.json
+
+*.txt
+report.*.json

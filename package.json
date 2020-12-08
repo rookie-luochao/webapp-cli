@@ -1,0 +1,170 @@
+{
+  "name": "webapp-cli",
+  "version": "0.0.1",
+  "description": "an out-of-the-box cli for create react web application",
+  "author": "luochao",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react webapp cli",
+    "create react app",
+    "create react webapp"
+  ],
+  "homepage": "https://github.com/rookie-luochao/webapp-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rookie-luochao/webapp-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rookie-luochao/webapp-cli/issues"
+  },
+  "scripts": {
+    "start": "devkit dev --max-old-space-size=4096",
+    "pkg": "devkit build --production",
+    "build": "devkit build",
+    "r": "devkit release",
+    "format": "prettier --write '**/*.{ts,tsx,json,md}'",
+    "codegen": "jest -t generate",
+    "debug": "NODE_ANALYZER=1",
+    "test": "yarn run tsc && jest",
+    "tsc": "tsc --incremental --diagnostics -p tsconfig.json",
+    "cleanup": "ts-node -T ./tools/tag-cleanup/index.ts",
+    "ncu": "ncu '/^@querycap.*$/' -u",
+    "sp": "ts-node ./tools/script/findUseless.ts",
+    "icon": "ts-node ./tools/svg2tsx/index.ts",
+    "img": "ts-node ./tools/img2src/index.ts",
+    "c": "ts-node ./tools/client/index.ts",
+    "fc": "ts-node ./tools/findClient/index.ts"
+  },
+  "devkit": {
+    "dev": "webpack-browser-sync --config webpack.config.ts --historyApiFallback --index=../index.html",
+    "build": "webpack --config webpack.config.ts"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "post-merge": "yarn",
+      "pre-commit": "lint-staged && pretty-quick --staged",
+      "pre-push": "yarn test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --quiet",
+      "git add"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      ".+\\.tsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "json",
+      "jsx",
+      "js"
+    ],
+    "modulePaths": [
+      "<rootDir>"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.es6"
+    },
+    "testRegex": ".*/__tests__/.+\\.(generator|test|spec)\\.(ts|tsx)$"
+  },
+  "devDependencies": {
+    "@babel/compat-data": "^7.11.0",
+    "@babel/core": "7.11.4",
+    "@babel/plugin-proposal-numeric-separator": "7.10.4",
+    "@babel/plugin-syntax-typescript": "^7.10.4",
+    "@babel/preset-env": "7.11.0",
+    "@babel/runtime": "7.11.2",
+    "@babel/runtime-corejs3": "^7.11.2",
+    "@commitlint/cli": "9.1.2",
+    "@commitlint/config-conventional": "9.1.2",
+    "@emotion/babel-preset-css-prop": "10.0.27",
+    "@emotion/core": "10.0.35",
+    "@emotion/is-prop-valid": "0.8.8",
+    "@morlay/ts-gen-core": "1.2.2",
+    "@querycap-dev/babel-preset": "0.3.12",
+    "@querycap-dev/dev-deps": "0.2.22",
+    "@querycap-dev/devkit": "0.5.7",
+    "@querycap-dev/generate": "^0.4.10",
+    "@querycap-dev/generate-client": "0.5.13",
+    "@querycap-dev/monobundle": "0.7.15",
+    "@querycap-dev/webpack-preset": "^0.7.0",
+    "@querycap-dev/webpack-preset-assets": "^0.7.0",
+    "@querycap-dev/webpack-preset-html": "0.8.3",
+    "@querycap-dev/webpack-preset-ts": "0.8.6",
+    "@querycap/eslint-config": "^0.0.17",
+    "@turf/turf": "5.1.6",
+    "@types/fs-extra": "9.0.1",
+    "@types/history": "4.7.7",
+    "@types/inquirer": "^7.3.1",
+    "@types/jest": "26.0.x",
+    "@types/react": "16.9.17",
+    "@types/react-dom": "16.9.8",
+    "@types/uuid": "8.3.0",
+    "@typescript-eslint/eslint-plugin": "3.10.0",
+    "@typescript-eslint/parser": "3.10.0",
+    "chalk": "4.1.0",
+    "eslint": "7.7.0",
+    "eslint-plugin-react": "7.20.6",
+    "eslint-plugin-react-hooks": "4.1.0",
+    "fs-extra": "9.0.1",
+    "husky": "^4.2.5",
+    "inquirer": "^7.3.3",
+    "jest": "26.4.2",
+    "lint-staged": "10.2.11",
+    "path-browserify": "^1.0.1",
+    "postcss": "7.0.32",
+    "prettier": "^2.2.0",
+    "pretty": "^2.0.0",
+    "pretty-quick": "^3.0.0",
+    "stream-browserify": "^3.0.0",
+    "ts-node": "9.0.0",
+    "typescript": "4.0.2",
+    "webpack": "5.0.0",
+    "webpack-browser-sync": "0.12.2",
+    "webpack-cli": "3.3.12"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "@querycap/access": "0.5.4",
+    "@querycap/config": "0.6.3",
+    "@querycap/notify": "^0.5.2",
+    "@querycap/persister": "0.5.3",
+    "@querycap/request": "0.5.2",
+    "@querycap/route-tree": "0.4.1",
+    "@querycap/webworkerutils": "^0.3.0",
+    "@reactorx/core": "0.20.8",
+    "@reactorx/form": "^0.20.7",
+    "@reactorx/request": "0.20.9",
+    "@reactorx/router": "0.20.8",
+    "antd": "4.9.2",
+    "axios": "0.20.0",
+    "babel-jest": "26.3.0",
+    "babel-plugin-import": "^1.13.3",
+    "core-js": "3.6.x",
+    "date-fns": "2.15.0",
+    "emotion-theming": "10.0.27",
+    "history": "4.10.1",
+    "lodash": "4.17.20",
+    "lodash-es": "4.17.15",
+    "moment": "2.27.0",
+    "polished": "3.6.5",
+    "react": "^16.13.1",
+    "react-dom": "16.13.1",
+    "react-quill": "^1.3.5",
+    "redux-logger": "3.0.6",
+    "rxjs": "6.6.2",
+    "uuid": "8.3.0"
+  }
+}

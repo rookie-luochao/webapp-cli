@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "*": ["__types__/*", "*"],
+      "@park/*": ["src-app/park/*"],
+      "@mock": ["src-core/mock/index.ts"],
+      "@UI": ["src-components/UI/index.tsx"],
+      "@core": ["src-core/core/index.ts"],
+      "@module": ["src-components/module/index.tsx"]
+    },
+    /* Basic Options */
+    "target": "es2015",
+    "module": "commonjs",
+    "lib": ["es2017", "dom", "webworker"],
+    "jsx": "react",
+    "rootDir": ".",
+    "removeComments": true,
+    "pretty": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
+    "strictFunctionTypes": false,
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "preserveConstEnums": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    /* Source Map Options */
+    "sourceMap": false,
+    /* Experimental Options */
+    "experimentalDecorators": false,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    /* emit ts declaration cache */
+    "declaration": true,
+    "noEmitOnError": false,
+    "emitDeclarationOnly": true,
+    "outDir": ".tmp"
+  },
+  "exclude": [".tmp", "node_modules"]
+}
