@@ -1,6 +1,5 @@
 {
   "name": "webapp-cli",
-  "version": "0.0.1",
   "description": "an out-of-the-box cli for create react web application",
   "author": "luochao",
   "license": "MIT",
