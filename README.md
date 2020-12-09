@@ -1,3 +1,19 @@
+### quick start
+
+```javascript
+// 拉取代码
+git clone git@github.com:rookie-luochao/webapp-cli.git
+
+// 进入目标文件
+cd webapp-cli
+
+// 安装依赖
+yarn
+
+// 启动示例项目
+yarn start tpl
+```
+
 ### cli basic command
 
 ```javascript
