@@ -4,6 +4,8 @@ import { DragableTableWithPagination } from "src-components/table/DragableTableW
 import { ParsedUrlQuery, useQuery } from "src-core/hooks/useQuery";
 import { ds } from "../ds";
 import { basicCenterLayoutStyle, basicWrapStyle } from "../style";
+import { IPersonBasicInfo } from "./mock";
+import {displayPersonBasicInfo } from "./translate";
 
 const fixedColumns = [
   {
@@ -20,14 +22,14 @@ const columns = [
   {
     index: 0,
     dataIndex: "name",
-    title: "姓名",
+    title: displayPersonBasicInfo("name"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 1,
-    dataIndex: "age",
+    dataIndex: displayPersonBasicInfo("age"),
     title: "年龄",
     
     onHeaderCell(column: any) {
@@ -36,7 +38,7 @@ const columns = [
   },
   {
     index: 2,
-    dataIndex: "height",
+    dataIndex: displayPersonBasicInfo(("height")),
     title: "身高（cm）",
     onHeaderCell(column: any) {
       return column;
@@ -44,7 +46,7 @@ const columns = [
   },
   {
     index: 3,
-    dataIndex: "weight",
+    dataIndex: displayPersonBasicInfo(("weight")),
     title: "体重（kg）",
     onHeaderCell(column: any) {
       return column;
@@ -52,7 +54,7 @@ const columns = [
   },
   {
     index: 4,
-    dataIndex: "level",
+    dataIndex: displayPersonBasicInfo(("level")),
     title: "学历",
     onHeaderCell(column: any) {
       return column;
@@ -60,7 +62,7 @@ const columns = [
   },
   {
     index: 5,
-    dataIndex: "maritalStatus",
+    dataIndex: displayPersonBasicInfo("maritalStatus"),
     title: "婚姻状况",
     onHeaderCell(column: any) {
       return column;
@@ -68,7 +70,7 @@ const columns = [
   },
   {
     index: 6,
-    dataIndex: "income",
+    dataIndex: displayPersonBasicInfo("income"),
     title: "收入（元）",
     onHeaderCell(column: any) {
       return column;
@@ -76,25 +78,13 @@ const columns = [
   },
   {
     index: 7,
-    dataIndex: "birthplace",
+    dataIndex: displayPersonBasicInfo(("birthplace")),
     title: "出生地址",
     onHeaderCell(column: any) {
       return column;
     },
   },
 ];
-
-interface IPersonInfo {
-  id: string;
-  name: string;
-  age: number;
-  height: number;
-  weight: number;
-  level: string;
-  maritalStatus: string;
-  income: number;
-  birthplace: string;
-}
 
 interface IQueryData extends ParsedUrlQuery {
   offset: string;
@@ -107,7 +97,7 @@ export function DragTableDemo() {
   const offset = Number(query.offset || 0);
   const size = Number(query.size || 10);
 
-  const [list, setList] = useState([] as IPersonInfo[]);
+  const [list, setList] = useState([] as IPersonBasicInfo[]);
   const total = 100;
 
   const allPersonInfos = useMemo(() => {
@@ -123,7 +113,7 @@ export function DragTableDemo() {
         maritalStatus: "已婚",
         income: 30000,
         birthplace: "四川省成都市高新区天府四街02001号",
-      } as IPersonInfo);
+      } as IPersonBasicInfo);
     }
     return returnAllPersonInfos;
   }, []);

@@ -14,5 +14,5 @@ export const verticalCenterStyle: CSSObject = flex({ alignItems: "center" });
 
 export const basicWrapStyle: CSSObject = {
   backgroundColor: "#fafafa",
-  minHeight: globalThis.document.body.clientHeight,
+  minHeight: globalThis.document.body.offsetHeight,
 }

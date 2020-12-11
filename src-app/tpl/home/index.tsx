@@ -6,7 +6,7 @@ import { Link } from "@reactorx/router";
 import { ds } from "../ds";
 
 export function Home() {
-  const componentDemoroutes = useMemo(() => {
+  const componentDemoRoutes = useMemo(() => {
     const allRoutes = routes();
     return find(allRoutes.routes, item => item.pathname === "component-demo")?.routes;
   }, []);
@@ -16,7 +16,7 @@ export function Home() {
       <div css={[basicCenterLayoutStyle, { padding: "2em 0em" }]}>
         <h2>this is some components demo</h2>
         {
-          map(componentDemoroutes, item => (
+          map(componentDemoRoutes, item => (
             <div
               key={item.path}
               css={{ 
