@@ -14,7 +14,7 @@ export = withPresets(
       browserSync: { https: true },
     });
 
-    // generate client from swager
+    // generate client from swagger
     // if (!state.flags.production && !process.env.SKIP_CLIENT) {
     //   generateClientFromConfig(state.meta.config, {
     //     cwd: __dirname,

@@ -19,7 +19,7 @@ interface IInfoListProps<TData> {
 
 export function InfoList<TData extends Dictionary<any>>(props: IInfoListProps<TData>) {
   const { dataSource, formatters = {} as TData, displayLabel, leftLabelPercent = 30,sortedKeys, rowItemCount = 2,
-    rowItemSpace = 4, oddAndEvenRowBgColorsTuple = ["#EFF3F6", "#f8fAFB"], ...otherProps } = props;
+    rowItemSpace = 4, oddAndEvenRowBgColorsTuple = ["#EFF3F6", "#f8fafb"], ...otherProps } = props;
   const isSorted = !!sortedKeys;
   const defaultFormatValue = (v: keyof TData) => v || "-";
   const countRef = useRef<number>(0);
