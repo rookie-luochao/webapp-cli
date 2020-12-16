@@ -31,7 +31,7 @@ import { pathExistsSync, readdirSync } from "fs-extra";
 
   await generateClientFromConfig(conf, {
     cwd: path.join(__dirname, "../../"),
-    clientCreator: "src-core/request.createRequestActor",
+    clientCreator: "@querycap/request.createRequestActor",
   });
 })();
 
