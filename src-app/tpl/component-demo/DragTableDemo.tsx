@@ -1,10 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IPager } from "src-components/search/SearchContext";
 import { DragableTableWithPagination } from "src-components/table/DragableTableWithPagination";
 import { ParsedUrlQuery, useQuery } from "src-core/hooks/useQuery";
 import { ds } from "../ds";
 import { basicCenterLayoutStyle, basicWrapStyle } from "../style";
-import { IPersonBasicInfo } from "./mock";
+import { IPersonBasicInfo, usePersonInfoList } from "./mock";
 import {displayPersonBasicInfo } from "./translate";
 
 const fixedColumns = [
@@ -29,8 +29,8 @@ const columns = [
   },
   {
     index: 1,
-    dataIndex: displayPersonBasicInfo("age"),
-    title: "年龄",
+    dataIndex: "age",
+    title: displayPersonBasicInfo("age"),
     
     onHeaderCell(column: any) {
       return column;
@@ -38,48 +38,48 @@ const columns = [
   },
   {
     index: 2,
-    dataIndex: displayPersonBasicInfo(("height")),
-    title: "身高（cm）",
+    dataIndex: "height",
+    title: displayPersonBasicInfo("height"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 3,
-    dataIndex: displayPersonBasicInfo(("weight")),
-    title: "体重（kg）",
+    dataIndex: "weight",
+    title: displayPersonBasicInfo("weight"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 4,
-    dataIndex: displayPersonBasicInfo(("level")),
-    title: "学历",
+    dataIndex: "level",
+    title: displayPersonBasicInfo("level"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 5,
-    dataIndex: displayPersonBasicInfo("maritalStatus"),
-    title: "婚姻状况",
+    dataIndex: "maritalStatus",
+    title: displayPersonBasicInfo("maritalStatus"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 6,
-    dataIndex: displayPersonBasicInfo("income"),
-    title: "收入（元）",
+    dataIndex: "income",
+    title: displayPersonBasicInfo("income"),
     onHeaderCell(column: any) {
       return column;
     },
   },
   {
     index: 7,
-    dataIndex: displayPersonBasicInfo(("birthplace")),
-    title: "出生地址",
+    dataIndex: "birthplace",
+    title: displayPersonBasicInfo("birthplace"),
     onHeaderCell(column: any) {
       return column;
     },
@@ -100,23 +100,7 @@ export function DragTableDemo() {
   const [list, setList] = useState([] as IPersonBasicInfo[]);
   const total = 100;
 
-  const allPersonInfos = useMemo(() => {
-    const returnAllPersonInfos = [];
-    for(let i = 0; i <= 100; i = i + 1) {
-      returnAllPersonInfos.push({
-        id: i.toString(),
-        name: `张三${i}`,
-        age: 20,
-        height: 185,
-        weight: 75,
-        level: "博士研究生",
-        maritalStatus: "已婚",
-        income: 30000,
-        birthplace: "四川省成都市高新区天府四街02001号",
-      } as IPersonBasicInfo);
-    }
-    return returnAllPersonInfos;
-  }, []);
+  const allPersonInfos = usePersonInfoList();
 
   useEffect(() => {
     setList(allPersonInfos.slice(offset, offset + size))

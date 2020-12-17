@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 export interface IPersonBasicInfo {
   id: string;
   name: string;
@@ -37,4 +39,22 @@ export const personInfo: IPerson = {
   motherName: "刘二",
   motherAge: 48,
   motherProfession: "农民",
+}
+
+export function usePersonInfoList(rowCount?: number) {
+  const length = rowCount || 100;
+
+  const list = useMemo(() => {
+    const returnAllPersonInfos = [];
+    for(let i = 0; i <= length; i = i + 1) {
+      returnAllPersonInfos.push({
+        ...personInfo,
+        id: i.toString(),
+        name: `张三${i}`,
+      } as IPerson);
+    }
+    return returnAllPersonInfos
+  }, []);
+
+  return list || [];
 }
