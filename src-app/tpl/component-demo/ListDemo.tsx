@@ -1,7 +1,8 @@
+import { map } from "lodash";
 import React from "react";
 import {IListRecordItemConfig, List } from "src-components/list/List";
 import { ds } from "../ds";
-import {basicCenterLayoutStyle, basicWrapStyle} from "../style";
+import {basicCenterLayoutStyle, basicWrapStyle, defaultTagStyle, tagBasicStyle} from "../style";
 import {IPerson, usePersonInfoList } from "./mock";
 import { displayPersonInfo } from "./translate";
 
@@ -12,7 +13,7 @@ export function ListDemo() {
     {
       keyName: "name",
       isDisplayKeyName: false,
-      rowItemPercent: 15,
+      rowItemPercent: 10,
       valueStyle: {
         fontSize: 24,
         fontWeight: 500,
@@ -44,10 +45,26 @@ export function ListDemo() {
       rowItemPercent: 50,
     },
     {
+      keyName: "love",
+      rowItemPercent: 100,
+    },
+    {
       keyName: "birthplace",
       rowItemPercent: 100,
     },
   ] as IListRecordItemConfig<keyof IPerson>[];
+
+  const displayLove = (values: string[]) => {
+    return (
+      <>
+        {map(values, item => (
+          <span key={item} css={[tagBasicStyle, defaultTagStyle]}>
+            {item}
+          </span>
+        ))}
+      </>
+    )
+  }
 
   return (
     <div css={basicWrapStyle}>
@@ -57,6 +74,9 @@ export function ListDemo() {
           rowId="id"
           sortedKeyConfig={sortedKeyConfig}
           displayLabel={displayPersonInfo}
+          formatters={{
+            love: displayLove
+          }}
         />
       </div>
     </div>

@@ -16,3 +16,16 @@ export const basicWrapStyle: CSSObject = {
   backgroundColor: "#fafafa",
   minHeight: globalThis.document.body.offsetHeight,
 }
+
+export const tagBasicStyle: CSSObject = {
+  display: "inline-block",
+  padding: "4px 6px",
+  borderRadius: 2,
+  marginRight: 6,
+};
+
+export const defaultTagStyle: CSSObject = {
+  backgroundColor: "#fafafa",
+  color: "rgba(0,0,0,.65)",
+  border: "1px solid #d9d9d9",
+};

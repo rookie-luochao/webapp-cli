@@ -13,12 +13,13 @@ export interface IPersonBasicInfo {
 }
 
 export interface IPersonOtherInfo {
-  fatherName: string;
-  fatherAge: number;
-  fatherProfession: string;
-  motherName: string;
-  motherAge: number;
-  motherProfession: string;
+  love?: string[];
+  fatherName?: string;
+  fatherAge?: number;
+  fatherProfession?: string;
+  motherName?: string;
+  motherAge?: number;
+  motherProfession?: string;
 }
 
 export interface IPerson extends IPersonOtherInfo, IPersonBasicInfo {}
@@ -33,6 +34,7 @@ export const personInfo: IPerson = {
   maritalStatus: "未婚",
   income: 30000,
   birthplace: "四川省成都市高新区天府四街02001号",
+  love: ["游戏", "音乐", "篮球", "代码"],
   fatherName: "王二",
   fatherAge: 50,
   fatherProfession: "农民",

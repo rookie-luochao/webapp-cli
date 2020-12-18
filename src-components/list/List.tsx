@@ -94,7 +94,7 @@ export function List<T extends Dictionary<any>>(props: IListProps<T>) {
                 ]}>
                 {isDisplayKeyName && (
                   <label css={[basicKeyStyle, keyNameStyle]}>
-                    {displayLabel ? displayLabel(keyName) : defaultFormatKeyName(keyName) }：
+                    {displayLabel ? displayLabel(keyName) || keyName : defaultFormatKeyName(keyName) }：
                   </label>
                 )}
                 <span css={[basicValueStyle, valueStyle]}>

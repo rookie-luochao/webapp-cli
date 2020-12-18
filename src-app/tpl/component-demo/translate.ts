@@ -12,9 +12,6 @@ export function displayPersonBasicInfo(field: keyof IPersonBasicInfo) {
       maritalStatus: "婚姻状况",
       income: "收入（元）",
       birthplace: "出生地址",
-      socialStaffNum: "参保人数",
-      historyNames: "曾用名",
-      englishName: "英文名称",
     } as { [key: string]: string })[field]
   );
 }
@@ -22,6 +19,7 @@ export function displayPersonBasicInfo(field: keyof IPersonBasicInfo) {
 export function displayPersonOtherInfo(field: keyof IPersonOtherInfo) {
   return (
     ({
+      love: "爱好",
       fatherName: "父亲姓名",
       fatherAge: "父亲年龄",
       fatherProfession: "父亲职业",
